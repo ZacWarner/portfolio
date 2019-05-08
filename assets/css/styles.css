@@ -1,0 +1,56 @@
+body {
+    background-color: #258EA6;
+}
+
+.mainPage {
+    background-color: #FE4A49;
+}
+
+#About {
+    background-color: #FED766;
+}
+#aboutCard {
+    background-color: #FED766;
+}
+#Portfolio {
+    background-color: #F9ADA0;
+}
+#portfolioCard {
+    background-color: #F9ADA0;
+}
+
+#Contact {
+    background-color: #83B692;
+}
+
+#name {
+    color: #F0F3BD;
+}
+
+#myPic {
+    height: 200px;
+    width: 200px;
+    transform: rotate(270deg);
+}
+
+#carTitle {
+    color: white;
+    background-color: #A44A3F;
+}
+
+#carDescription {
+
+    background-color:#A44A3F;
+}
+
+.carImage {
+    height: 20rem;
+}
+
+.startCard:hover {
+    cursor: pointer;
+}
+
+#return:hover {
+    cursor: pointer;
+}
