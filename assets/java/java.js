@@ -94,15 +94,31 @@ $(document).ready(function () {
 
         $("#cardRow").append(card);
 
+    };
 
+    function contact() {
+        $("#cardRow").empty();
+
+        var card = $("<div>").addClass("card w-100").attr("id", "contactCard");
+        var cardHeader = $("<h5>").addClass("card-header text-right").html("Contact    <i class='fas fa-reply' id='return'></i>");
+        var cardBody = $("<div>").addClass("card-body");
+        var loc = $("<p>").html("I currently live in Rocklin, CA");
+        var phone = $("<p>").html("<i class='fas fa-mobile-alt'></i> 916-300-8620");
+        var email = $("<p>").html('<i class="fas fa-envelope"></i> zektgn@gmail.com');
+        var linked = $("<p>").html('<i class="fab fa-linkedin mx-1"></i>linkedin link');
+        var gitHub = $("<p>").html('<i class="fab fa-github"></i> ZacWarner');
+        cardBody.append(loc, phone, email, linked, gitHub);
+        card.append(cardHeader, cardBody);
+
+        $("#cardRow").append(card);
     };
 
     function carItemBuilder(link, title, description) {
         var carItem = $("<div>").addClass("carousel-item");
         var img = $("<img>").addClass("d-block w-100 carImage").attr("src", link).attr("alt", title);
         var carCap = $("<div>").addClass("carousel-caption d-none d-md-block");
-        var h5 = $("<h5>").addClass("m-0 p-1").attr("id", "carTitle").html(title);
-        var p = $("<p>").attr("id", "carDescription").html(description);
+        var h5 = $("<h5>").addClass("m-0 p-1 rounded-top").attr("id", "carTitle").html(title);
+        var p = $("<p>").addClass("rounded-bottom").attr("id", "carDescription").html(description);
         carCap.append(h5, p);
         carItem.append(img, carCap);
         return carItem;
@@ -121,6 +137,10 @@ $(document).ready(function () {
 
     $(document).on("click", "#Portfolio", function () {
         portfolio();
+    });
+
+    $(document).on("click", "#Contact", function () {
+        contact();
     });
 
 });
