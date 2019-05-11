@@ -1,14 +1,7 @@
 $(document).ready(function () {
 
-    function Aboutme() {
 
-
-
-
-
-
-    };
-
+    //first site
     function startMenu() {
         $("#cardRow").empty();
 
@@ -142,5 +135,40 @@ $(document).ready(function () {
     $(document).on("click", "#Contact", function () {
         contact();
     });
+
+
+
+
+
+
+
+    //second site start
+
+    $(document).on("click", "#upgrade", function () {
+        $("#site").empty();
+        $("body").css("background-image", "url('assets/images/background.jpg')").css("background-size", "100%");
+        newHeader();
+    });
+
+    //functions for building second site.
+    function newHeader() {
+        var nav = $("<div>").addClass(" jumbotron border-bottom border-dark jumbotron-fluid text-white mx-5 mt-3 mb-0 px-5 pb-0 bg-transparent");
+        var div = $("<div>").addClass("container");
+        var row = $("<div>").addClass("row").addClass("align-text-bottom");
+        var col1 = $("<div>").addClass("col-md-6");
+        var col2 = $("<div>").addClass("col-md-6");
+        var h1 = $("<h1>").text("Zac Warner");
+        var h6 = $("<h4>").addClass("down").text("A full stack devolper")
+        col1.append(h1);
+        col2.append(h6);
+        row.append(col1, col2);
+        div.append(row);
+        nav.append(div);
+        $("body").prepend(nav);
+    };
+
+    function newNavBar() {
+        var nav = $("<nav>").addClass("navbar navbar-expand-lg bg-transparent");
+    };
 
 });
