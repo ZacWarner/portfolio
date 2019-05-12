@@ -63,15 +63,18 @@ $(document).ready(function () {
         var li2 = $("<li>").attr("data-target", "#projectsCar")
             .attr("data-slide-to", "1");
         var li3 = $("<li>").attr("data-target", "#projectsCar")
+            .attr("data-slide-to", "2");
+        var li4 = $("<li>").attr("data-target", "#projectsCar")
             .attr("data-slide-to", "3");
-        carIndicators.append(li1, li2, li3);
+        carIndicators.append(li1, li2, li3, li4);
 
         var carInner = $("<div>").addClass("carousel-inner");
         var car1 = carItemBuilder("assets/images/basic portfolio.png", "My First Portfolio!", "The first portfolio I built using just html and css");
         var car2 = carItemBuilder("assets/images/hangman game.png", "Word Guess Game!", "hangman made with java and html!");
         var car3 = carItemBuilder("assets/images/movie trivia.png", "Movie Trivia!", "A movie trivia game pulling questions from an api");
+        var car4 = carItemBuilder("aseets/images/projectOne.png", "Project one!", "A group project with mapbox functionality and other apis!")
         car1.addClass("active");
-        carInner.append(car1, car2, car3);
+        carInner.append(car1, car2, car3, car4);
 
         var carPrev = $("<a>").addClass("carousel-control-prev").attr("href", "#projectsCar")
             .attr("role", "button").attr("data-slide", "prev")
@@ -146,8 +149,13 @@ $(document).ready(function () {
 
     $(document).on("click", "#upgrade", function () {
         $("#site").empty();
-        $("body").css("background-image", "url('assets/images/background.jpg')").css("background-size", "100%");
+        $("body").css("background", "url('assets/images/background.jpg')").css("background-size", "100%");
+        console.log("again");
+        $("#site").addClass("text-white");
         newHeader();
+        newNavBar();
+        buildFramWork();
+        openingStuff();
     });
 
     //functions for building second site.
@@ -164,11 +172,81 @@ $(document).ready(function () {
         row.append(col1, col2);
         div.append(row);
         nav.append(div);
+
         $("body").prepend(nav);
     };
 
     function newNavBar() {
-        var nav = $("<nav>").addClass("navbar navbar-expand-lg bg-transparent");
+        var nav = $("<nav>").addClass("navbar navbar-expand-lg navbar-light bg-transparent text-white justify-content-center");
+        var container = $("<div>").addClass("container");
+        var row = $("<div>").addClass("row justify-content-center")
+        var a = $("<a>").addClass("navbar-brand h5").html("home");
+        var tog = $("<button>").addClass("navbar-toggler").attr("id", "button").attr("data-toggle", "collapse")
+            .attr("data-target", "#navbarSupportedContent").attr("aria-expanded", "false").attr("aria-label", "Toggle navigation");
+        var icon = $("<span>").addClass("navbar-toggler-icon");
+        tog.append(icon);
+        var div = $("<div>").addClass("collapse navbar-collapse").attr("id", "navbarSupportedContent");
+        var ul = $("<ul>").addClass("navbar-nav mr-auto");
+        var l1 = navbarListItemBuilder("About Me");
+        var l2 = navbarListItemBuilder("Portfolio");
+        var l3 = navbarListItemBuilder("Contact");
+        ul.append(l1, l2, l3);
+        div.append(ul);
+        row.append(a, tog, div);
+        container.append(row);
+        nav.append(container);
+        $("#site").prepend(nav);
     };
 
+    function navbarListItemBuilder(imp) {
+        var li = $("<li>").addClass("nav-item");
+        var a = $("<a>").addClass("nav-link h5").html(imp).attr("id", imp + "Link");
+        li.append(a);
+        return li;
+    };
+
+    function buildFramWork() {
+        var body = $("<div>").addClass("container");
+        var bodyRow = $("<div>").addClass("row");
+        var leftCol = $("<div>").addClass("col-md-2").attr("id", "leftCol");
+        var centerBody = $("<div>").addClass("col-md-8").attr("id", "body");
+        var rightCol = $("<div>").addClass("col-md-8").attr("id", "rightCol");
+        var bottomRow = $("<div>").addClass("row justify-content-center text-center").attr("id", "bottom");
+        bodyRow.append(leftCol, centerBody, rightCol);
+        body.append(bodyRow, bottomRow);
+        $("#site").append(bodyRow);
+    };
+
+    function openingStuff() {
+        var card = $("<div>").addClass("card text-white border-0 bg-transparent text-center");
+        var cardBody = $("<div>").addClass("card-body");
+        var cardTitle = $("<h5>").addClass("card-title ").text("Welcome to my Website!");
+        var h6 = $("<h6>").addClass("card-subtitle border-bottom mb-2").text("Hope you enjoy it! made using:");
+        var p1 = $("<p>").addClass("car-text").text("Html");
+        var p2 = $("<p>").addClass("car-text").text("JavaScript");
+        var p3 = $("<p>").addClass("car-text").text("CSS");
+        var p4 = $("<p>").addClass("car-text").text("Jquery");
+        var p5 = $("<p>").addClass("car-text").text("Bootstrap")
+
+        cardBody.append(cardTitle, h6, p1, p2, p3, p4, p5);
+        card.append(cardBody);
+        $("#body").append(card);
+    };
+
+    function newPortfolio() {
+        $("#body").css("background", "url(http://www.public-domain-photos.com/free-stock-photos-4/travel/san-diego/san-diego-bay-3.jpg) no-repeat center center fixed;")
+            .css("-webkit-background-size", "cover")
+            .css("-moz-background-size:", "cover")
+            .css("-o-background-size:", "cover")
+            .css("background-size", "cover")
+            .css("margin", "3%");
+        console.log("change");
+    };
+
+    $(document).on("click", "#PortfolioLink", function () {
+        $("#body").empty();
+        newPortfolio();
+
+        console.log("click")
+    });
 });

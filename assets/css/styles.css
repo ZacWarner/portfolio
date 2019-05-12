@@ -67,3 +67,12 @@ body {
     position:absolute;
     bottom: 0;
 }
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+    color: #9FB1BC;
+}
