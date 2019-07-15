@@ -17,12 +17,12 @@ $(document).ready(function () {
     };
 
     function cardBuilder(title, subTitle) {
-        var card = $("<div>").addClass("card text-center startCard").attr("style", "width: 18rem; height: 22rem;")
+        var card = $("<div>").addClass("card text-center text-white bg-transparent startCard border-3 border-dark").attr("style", "width: 18rem; height: 22rem;")
             .attr("id", title);
         var cardBody = $("<div>").addClass("card-body my-4");
         var cardTitle = $("<h5>").addClass("card-title").html(title);
-        var hr = $("<hr>");
-        var cardSubtitle = $("<h6>").addClass("card-subtitle mb-2 text-muted").html(subTitle);
+        var hr = $("<hr>").addClass("border-3 border-dark");
+        var cardSubtitle = $("<h6>").addClass("card-subtitle mb-2 text-white").html(subTitle);
 
         cardBody.append(cardTitle, hr, cardSubtitle);
         card.append(cardBody);
@@ -50,11 +50,13 @@ $(document).ready(function () {
     function portfolio() {
         $("#cardRow").empty();
 
-        var card = $("<div>").addClass("card text-center").attr("id", "portfolioCard");
+        var card = $("<div>").addClass("card text-center justify-content-center w-100").attr("id", "portfolioCard");
         var cardHeader = $("<h5>").addClass("card-header").html("Portfolio <i class='fas fa-reply' id='return'></i>");
-        var cardBody = $("<div>").addClass("card-body");
+        var cardBody = $("<div>").addClass("card-body text-center justify-content-center w-100");
+        var row = $("<div>").addClass("row text-center justify-content-center")
+        var col12 = $("<div>").addClass("col-md-12 text-center justify-content-center")
 
-        var carousel = $("<div>").addClass("carousel slide").attr("id", "projectsCar")
+        var carousel = $("<div>").addClass("carousel slide text-center justify-content-center").attr("id", "projectsCar")
             .attr("data-ride", "carousel");
 
         var carIndicators = $("<ol>").addClass("carousel-indicators");
@@ -64,17 +66,16 @@ $(document).ready(function () {
             .attr("data-slide-to", "1");
         var li3 = $("<li>").attr("data-target", "#projectsCar")
             .attr("data-slide-to", "2");
-        var li4 = $("<li>").attr("data-target", "#projectsCar")
-            .attr("data-slide-to", "3");
-        carIndicators.append(li1, li2, li3, li4);
 
-        var carInner = $("<div>").addClass("carousel-inner");
-        var car1 = carItemBuilder("assets/images/basic portfolio.png", "My First Portfolio!", "The first portfolio I built using just html and css");
-        var car2 = carItemBuilder("assets/images/hangman game.png", "Word Guess Game!", "hangman made with java and html!");
-        var car3 = carItemBuilder("assets/images/movie trivia.png", "Movie Trivia!", "A movie trivia game pulling questions from an api");
-        var car4 = carItemBuilder("assets/images/projectOne.png", "Project one!", "A group project with mapbox functionality and other apis!")
+        carIndicators.append(li1, li2, li3);
+
+        var carInner = $("<div>").addClass("carousel-inner text-center justify-content-center");
+
+        var car1 = carItemBuilder("assets/images/AgoraMainPage.png", "Agora, a market place to sell items", "A full stack web app using node, express, and passport", "https://project2agora.herokuapp.com/");
+        var car2 = carItemBuilder("assets/images/movie trivia.png", "Movie Trivia!", "A movie trivia game pulling questions from an api", "https://zacwarner.github.io/TriviaGame/");
+        var car3 = carItemBuilder("assets/images/projectOne.png", "Project one!", "A group project with mapbox functionality and other apis!", "https://zacwarner.github.io/GroupApp/")
         car1.addClass("active");
-        carInner.append(car1, car2, car3, car4);
+        carInner.append(car1, car2, car3);
 
         var carPrev = $("<a>").addClass("carousel-control-prev").attr("href", "#projectsCar")
             .attr("role", "button").attr("data-slide", "prev")
@@ -85,7 +86,9 @@ $(document).ready(function () {
 
         carousel.append(carIndicators, carInner, carPrev, carNext);
 
-        cardBody.append(carousel);
+        col12.append(carousel)
+        row.append(col12)
+        cardBody.append(row);
         card.append(cardHeader, cardBody);
 
         $("#cardRow").append(card);
@@ -101,22 +104,28 @@ $(document).ready(function () {
         var loc = $("<p>").html("I currently live in Rocklin, CA");
         var phone = $("<p>").html("<i class='fas fa-mobile-alt'></i> 916-300-8620");
         var email = $("<p>").html('<i class="fas fa-envelope"></i> zektgn@gmail.com');
-        var linked = $("<p>").html('<i class="fab fa-linkedin mx-1"></i>linkedin link');
-        var gitHub = $("<p>").html('<i class="fab fa-github"></i> ZacWarner');
+        var linked = $("<p>");
+        var gitHub = $("<p>");
+        var gitHubLInk = $("<a>").addClass("text-dark").attr("href", "https://github.com/ZacWarner").html('<i class="fab fa-github"></i> ZacWarner');
+        var linkedInLink = $("<a>").addClass("text-dark").attr("href", "https://www.linkedin.com/in/zac-warner-5a8079122/").html('<i class="fab fa-linkedin mx-1"></i>linkedin');
+        linked.append(linkedInLink);
+        gitHub.append(gitHubLInk);
         cardBody.append(loc, phone, email, linked, gitHub);
         card.append(cardHeader, cardBody);
 
         $("#cardRow").append(card);
     };
 
-    function carItemBuilder(link, title, description) {
-        var carItem = $("<div>").addClass("carousel-item");
-        var img = $("<img>").addClass("d-block w-100 carImage").attr("src", link).attr("alt", title);
+    function carItemBuilder(img, title, description, link) {
+        var carItem = $("<div>").addClass("carousel-item text-center justify-content-center");
+        var a = $("<a>").attr("href", link);
+        var img = $("<img>").addClass("d-block mx-auto carImage").attr("src", img).attr("alt", title);
         var carCap = $("<div>").addClass("carousel-caption d-none d-md-block");
         var h5 = $("<h5>").addClass("m-0 p-1 rounded-top").attr("id", "carTitle").html(title);
         var p = $("<p>").addClass("rounded-bottom").attr("id", "carDescription").html(description);
         carCap.append(h5, p);
-        carItem.append(img, carCap);
+        a.append(img)
+        carItem.append(a, carCap);
         return carItem;
     };
 
@@ -141,7 +150,7 @@ $(document).ready(function () {
 
 
 
-
+});
 
 
 

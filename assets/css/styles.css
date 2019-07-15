@@ -1,27 +1,32 @@
 body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
     
-    background-color: #258EA6;
 }
 
 .mainPage {
     background-color: #FE4A49;
 }
 
-#About {
-    background-color: #FED766;
+.border-3 {
+    border-width:3px !important;
 }
+
 #aboutCard {
     background-color: #FED766;
 }
-#Portfolio {
-    background-color: #F9ADA0;
-}
+
 #portfolioCard {
     background-color: #F9ADA0;
 }
 
 #Contact {
-    background-color: #83B692;
+    
 }
 
 #contactCard {
@@ -30,7 +35,7 @@ body {
 }
 
 #name {
-    color: #F0F3BD;
+    color: white;
 }
 
 #myPic {
