@@ -4,10 +4,12 @@ $(document).ready(function () {
     //first site
     function startMenu() {
         $("#cardRow").empty();
+        var mySkills = ["Html", "JavaScript", "Node", "React", "MongoDb"];
+        var myProjects = ["Agora", "Movie Trivia", "Discount Destinations"]
 
         var cardDeck = $("<div>").addClass("card-deck justify-content-center");
-        var aboutTile = cardBuilder("About", "About me!");
-        var portTile = cardBuilder("Portfolio", "My Projects");
+        var aboutTile = cardBuilder("About", "Skills: ", mySkills);
+        var portTile = cardBuilder("Portfolio", "My Projects:", myProjects);
         var contactTile = cardBuilder("Contact", "How to get in touch!");
 
         cardDeck.append(aboutTile, portTile, contactTile);
@@ -16,13 +18,21 @@ $(document).ready(function () {
 
     };
 
-    function cardBuilder(title, subTitle) {
+    function cardBuilder(title, subTitle, listArr) {
         var card = $("<div>").addClass("card text-center text-white bg-transparent startCard border-3 border-dark").attr("style", "width: 18rem; height: 22rem;")
             .attr("id", title);
         var cardBody = $("<div>").addClass("card-body my-4");
-        var cardTitle = $("<h5>").addClass("card-title").html(title);
+        var cardTitle = $("<h4>").addClass("card-title").html(title);
         var hr = $("<hr>").addClass("border-3 border-dark");
-        var cardSubtitle = $("<h6>").addClass("card-subtitle mb-2 text-white").html(subTitle);
+        var cardSubtitle = $("<h5>").addClass("card-subtitle mb-3 text-white").html(subTitle);
+        if (listArr) {
+            let ul = $("<ul>").addClass("text-left")
+            for (let i = 0; i < listArr.length; i++) {
+                let p = $("<li>").addClass("card-subtitle my-2 text-white").html(listArr[i]);
+                ul.append(p);
+            }
+            cardSubtitle.append(ul);
+        }
 
         cardBody.append(cardTitle, hr, cardSubtitle);
         card.append(cardBody);
