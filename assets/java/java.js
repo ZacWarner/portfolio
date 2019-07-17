@@ -71,9 +71,21 @@ $(document).ready(function () {
 
         var carInner = $("<div>").addClass("carousel-inner text-center justify-content-center");
 
-        var car1 = carItemBuilder("assets/images/AgoraMainPage.png", "Agora, a market place to sell items", "A full stack web app using node, express, and passport", "https://project2agora.herokuapp.com/");
-        var car2 = carItemBuilder("assets/images/movie trivia.png", "Movie Trivia!", "A movie trivia game pulling questions from an api", "https://zacwarner.github.io/TriviaGame/");
-        var car3 = carItemBuilder("assets/images/projectOne.png", "Project one!", "A group project with mapbox functionality and other apis!", "https://zacwarner.github.io/GroupApp/")
+        var car1 = carItemBuilder("assets/images/AgoraMainPage.png",
+            "Agora, a market place to sell items",
+            "A full stack web app using node, express, and passport",
+            "https://project2agora.herokuapp.com/",
+            "https://github.com/ZacWarner/Project2");
+        var car2 = carItemBuilder("assets/images/movie trivia.png",
+            "Movie Trivia!",
+            "A movie trivia game pulling questions from an api",
+            "https://zacwarner.github.io/TriviaGame/",
+            "https://github.com/ZacWarner/TriviaGame");
+        var car3 = carItemBuilder("assets/images/projectOne.png",
+            "Discount Destinations!",
+            "A group project with mapbox functionality and other apis!",
+            "https://zacwarner.github.io/GroupApp/",
+            "https://github.com/ZacWarner/GroupApp")
         car1.addClass("active");
         carInner.append(car1, car2, car3);
 
@@ -116,14 +128,16 @@ $(document).ready(function () {
         $("#cardRow").append(card);
     };
 
-    function carItemBuilder(img, title, description, link) {
+    function carItemBuilder(img, title, description, link, gitHub) {
         var carItem = $("<div>").addClass("carousel-item text-center justify-content-center");
         var a = $("<a>").attr("href", link);
         var img = $("<img>").addClass("d-block mx-auto carImage").attr("src", img).attr("alt", title);
         var carCap = $("<div>").addClass("carousel-caption d-none d-md-block");
         var h5 = $("<h5>").addClass("m-0 p-1 rounded-top").attr("id", "carTitle").html(title);
-        var p = $("<p>").addClass("rounded-bottom").attr("id", "carDescription").html(description);
-        carCap.append(h5, p);
+        var p = $("<p>").addClass(" m-0").attr("id", "carDescription").html(description);
+        var p2 = $("<p>").addClass("rounded-bottom pb-2 m-0").attr("id", "carDescription").html("click the picture to check out the deployed link. Link to Github repo bellow.");
+        var gitHub = $("<a>").addClass("rounded text-white m-0 pb-1 px-4").attr("id", "carDescription").attr("href", gitHub).html('<i class="fab fa-github"></i> GitHub Repo');
+        carCap.append(h5, p, p2, gitHub);
         a.append(img)
         carItem.append(a, carCap);
         return carItem;
