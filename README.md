@@ -1,6 +1,16 @@
-# portfolio
+# My portfolio
+Built to be a front page for my work.
 
-#### My portfolio
+## Deployed link
+https://zacwarner.github.io/portfolio/
 
-backgroun image: 
+### built using:
+* Html
+* Css
+* Bootstrap
+* JavaScript
+* Jquery
+
+
+####background image: 
 Photo by Breno Freitas on Unsplash
