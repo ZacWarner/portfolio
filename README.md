@@ -12,5 +12,5 @@ https://zacwarner.github.io/portfolio/
 * Jquery
 
 
-####background image: 
+#### background image: 
 Photo by Breno Freitas on Unsplash
